@@ -10,7 +10,7 @@ const formRef = ref(null);
 const API_URL = import.meta.env.VITE_API_URL;
 
 const submit = async () => {
-  const res = await axios(`${API_URL}/api/payment`, {
+  const res = await axios.post(`${API_URL}/api/payment`, {
     amount: amount.value,
     order_id: order_id.value,
   });
