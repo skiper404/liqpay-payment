@@ -11,6 +11,7 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 const app = express();
 app.use(cors({ origin: '*' }));
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('Server work!');
