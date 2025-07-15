@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   res.send('Server work!');
 });
 
-app.post('/payment', (req, res) => {
+app.post('/api/payment', (req, res) => {
   const { amount, order_id } = req.body;
 
   const liqpayData = {
@@ -28,7 +28,7 @@ app.post('/payment', (req, res) => {
     description: 'Тестовая оплата',
     amount: amount,
     order_id: order_id,
-    client_url: 'https://client-1.up.railway.app/payment',
+    result_url: 'https://client-1.up.railway.app/payment',
     server_url: 'https://server-1.up.railway.app/api/payment-webhook',
   };
 
@@ -46,7 +46,7 @@ app.post('/api/payment-webhook', (req, res) => {
   const { data, signature } = req.body;
 
   const expectedSignature = crypto
-    .createHash('rsa1')
+    .createHash('sha1')
     .update(PRIVATE_KEY + data + PRIVATE_KEY)
     .digest('base64');
 

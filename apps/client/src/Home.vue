@@ -34,7 +34,12 @@ const submit = async () => {
   </button>
 
   <form action="https://liqpay.ua/api/3/checkout" method="POST" ref="formRef">
-    <input type="hidden" class="border" :value="dataLiqpay" />
-    <input type="hidden" class="border" :value="signatureLiqpay" />
+    <input type="hidden" name="data" class="border" :value="dataLiqpay" />
+    <input
+      type="hidden"
+      name="signature"
+      class="border"
+      :value="signatureLiqpay"
+    />
   </form>
 </template>
